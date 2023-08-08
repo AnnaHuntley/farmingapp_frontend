@@ -11,7 +11,7 @@ function CropNew({ onCreate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/crops", {
+      const response = await fetch("/api/crops", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

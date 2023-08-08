@@ -11,7 +11,7 @@ function CropEdit({ crop, onUpdate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/crops/${crop.id}`, {
+      const response = await fetch(`/api/crops/${crop.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

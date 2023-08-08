@@ -3,7 +3,7 @@ import React from "react";
 function CropDelete({ crops, onEdit, onDelete }) {
   const handleDelete = async (cropId) => {
     try {
-      await fetch(`crops/${cropId}`, {
+      await fetch(`/api/crops/${cropId}`, {
         method: "DELETE",
       });
       onDelete(cropId);
