@@ -11,9 +11,10 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("http://localhost:4000", {
+        const response = await axios.get("http://13.48.126.151:3000/", {
           headers: { Accept: "application/json" },
         });
+        console.log("Data fetched:", response.data);
         setCrops(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -24,8 +25,10 @@ function App() {
   }, []);
 
   const handleCreate = (newCrop) => {
-    setCrops([...crops, newCrop]);
+    console.log("New crop created:", newCrop);
+    setCrops((prevCrops) => [...prevCrops, newCrop]);
   };
+  
 
   const handleEdit = (updatedCrop) => {
     const updatedCrops = crops.map((crop) => (crop.id === updatedCrop.id ? updatedCrop : crop));
