@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("http://13.48.126.151:3000/", {
+        const response = await axios.get("/crops", {
           headers: { Accept: "application/json" },
         });
         console.log("Data fetched:", response.data);
