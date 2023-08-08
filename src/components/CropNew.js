@@ -11,7 +11,7 @@ function CropNew({ onCreate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/crops", {
+      const response = await fetch("http://13.48.126.151:3000/crops", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
