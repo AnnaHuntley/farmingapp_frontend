@@ -1,7 +1,4 @@
-
-import api from "../api"
 import React, { useState } from "react";
-
 
 function CropNew({ onCreate }) {
   const [cropData, setCropData] = useState({ name: "", description: "", quantity: 0 });
@@ -14,8 +11,15 @@ function CropNew({ onCreate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/crops", cropData);
-      onCreate(response.data);
+      const response = await fetch("http://13.48.126.151:3000/crops", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cropData),
+      });
+      const data = await response.json();
+      onCreate(data);
       setCropData({ name: "", description: "", quantity: 0 });
     } catch (error) {
       console.error("Error creating crop:", error);
