@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function CropEdit({ crop, onUpdate }) {
   const [editedCrop, setEditedCrop] = useState({ ...crop });
@@ -11,15 +12,8 @@ function CropEdit({ crop, onUpdate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://13.48.126.151:3000/crops/${crop.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(editedCrop),
-      });
-      const data = await response.json();
-      onUpdate(data);
+      const response = await axios.put(`http://13.48.126.151:3000/crops/${crop.id}`, editedCrop);
+      onUpdate(response.data);
     } catch (error) {
       console.error("Error editing crop:", error);
     }

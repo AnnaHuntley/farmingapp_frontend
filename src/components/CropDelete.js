@@ -1,11 +1,10 @@
 import React from "react";
+import axios from "axios";
 
 function CropDelete({ crops, onEdit, onDelete }) {
   const handleDelete = async (cropId) => {
     try {
-      await fetch(`http://13.48.126.151:3000/crops/${cropId}`, {
-        method: "DELETE",
-      });
+      await axios.delete(`http://13.48.126.151:3000/crops/${cropId}`);
       onDelete(cropId);
     } catch (error) {
       console.error("Error deleting crop:", error);
